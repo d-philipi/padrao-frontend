@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { GlobalStyle } from './styled';
+import React from 'react';
 
-function App() {
+import Rota2 from "./page/rota2/rota2";
+import Rota1 from "./page/rota1/rota1";
+import MyContext from "./context/MyContext";
+
+
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+    	<GlobalStyle/>
+		<MyContext.Provider value={[1,2,3]}>
+		<Routes>
+			<Route path="/" element={<Rota1 />} />
+			<Route path="/rota2" element={<Rota2 />}/>
+		</Routes>
+		</MyContext.Provider>
+	</BrowserRouter>
   );
 }
-
-export default App;
